@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use( multer().any())
 
 
-mongoose.connect("mongodb+srv://arijit8637:WTqiGxjIFMSg5nxn@cluster0.u6fy9.mongodb.net/project-SocialMedia?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://arijit8637:WTqiGxjIFMSg5nxn@cluster0.u6fy9.mongodb.net/project-Class-Student?retryWrites=true&w=majority", {
         useNewUrlParser: true
     })
     .then(() => console.log("MongoDb is connected"))

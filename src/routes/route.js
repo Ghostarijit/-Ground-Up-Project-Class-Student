@@ -2,48 +2,37 @@ const express = require('express');
 const router = express.Router();
 
 
-const loginController = require("../controller/loginController")
-const middleWare = require("../middleWare/auth")
-const user = require("../controller/userController")
-const post = require("../controller/postController")
-const follow = require("../controller/followersController")
-const comment = require("../controller/commentController")
-const likes = require("../controller/likeController")
+const classController = require("../controller/classController")
+const examController = require("../controller/examController")
+const studentController = require("../controller/studentController")
+const resultController = require("../controller/resultController")
 
 
 
 
-router.post("/api/follow/:userId/:followingID",middleWare.validateToken, follow.followers)
+router.post("/class/createClass", classController.createClass)
 
-router.get("/Users/:userId", user.Getuser)
+router.post("/exam/createExam",examController.createExam)
 
-router.put("/api/unfollow/:userId/:followingID",middleWare.validateToken, follow.UnFollow)
+router.get("/exam/Getallclassexam/:examId",examController.GetAllClassExam)
 
-router.post("/login", loginController.loginUser)
+router.post("/students/createStudent",studentController.createStudent)
 
-router.post("/api/posts",middleWare.validateToken, post.createPost)
+router.post("/result/createresult", resultController.createresult)
 
-router.post("/api/like/:userId/:likedID",middleWare.validateToken, likes.Like)
+router.post("/result/createresult", resultController.createresult)
 
-router.post("/api/unlike/:userId/:likedID",middleWare.validateToken, likes.unLike)
+router.get("/result/:classId/:examId/:studentId", resultController.GetOneStudentResult)
 
+router.get("/result/:classId", resultController.GetAllStudentPerticularClassResult)
 
-router.post("/api/comment/createComment",middleWare.validateToken, comment.createComment)
+router.get("/result/:resultId", resultController.GetResultById)
 
-router.get("/post/:postId", post.GetPostById)
+router.get("/result/:examId", resultController.GetAllResultPerticularUnitTest)
 
-router.get("/Allpost/:userId", post.GetAllPost)
+router.get("/result/allresult", resultController.GetAllResultWithAllUnitTest)
 
-router.delete("/DeletePost/:postId/:userId",middleWare.validateToken, post.DeletePost)
-
-
-
-
-
-
-
-
-
+router.get("/result/subjetclass", resultController.GetAllResultWithPerticularClassWithPerticularSubject)
 
 
 
